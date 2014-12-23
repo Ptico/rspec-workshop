@@ -7,7 +7,7 @@ RSpec.describe Warship do
   # Кораблики делают пиу-пиу бластерами
   before(:each) do
     loop do
-      break if challenger.state == :destroyed || defiant.state == :destroyed
+      break if challenger.state == :wasted || defiant.state == :wasted
       defiant.attack(challenger)
       challenger.attack(defiant)
     end
@@ -16,7 +16,7 @@ RSpec.describe Warship do
   it 'у кого больше брони и кто мощнее стреляет, тот и победил' do
     expect(challenger.health).to be > defiant.health
 
-    expect(challenger.state).to equal(:ok)
-    expect(defiant.state).to    equal(:destroyed)
+    expect(challenger.state).to equal(:damaged)
+    expect(defiant.state).to    equal(:wasted)
   end
 end
